@@ -1,14 +1,35 @@
-import ogs from 'open-graph-scraper';
+import ogs from "open-graph-scraper";
+import getUrl from "get-urls";
 
-export function handler(event, context, callback){
-  const url = event.queryStringParameters.url;
-  const options = {'url': url};
+export function handler(event, context, callback) {
+  let text = event.queryStringParameters.q;
+  const urls = getUrl(text);
+
+  // Return if there is no urls in text
+  if (!urls.size) {
+    return callback(null, {
+      statusCode: 200,
+      body: query
+    });
+  }
+
+  // Retrieve first URL in text - urls are already normalized
+  const url = [...urls][0];
+
+  const options = { url };
+
+  // TODO: Remove URLS from text 
+
+  // TODO: Build an object with og data and text without URLS
 
   ogs(options, (error, results) => {
-    console.log(results);
+    // TODO: Refactor this
+    const statusCode = results.success ? 200 : 500;
+    const body = results.success ? results.data : results.error;
+
     callback(null, {
-      statusCode: 200,
-      body: JSON.stringify({msg: "After OG" })
-    })
+      statusCode,
+      body: JSON.stringify(body)
+    });
   });
 }

@@ -1,30 +1,44 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 
+/**
+ * TODO: Move this
+ */
 class Lambda extends Component {
   constructor(props) {
     super(props);
-    this.state = {loading: false, msg: null};
+    this.state = { value: null, loading: false, msg: null };
   }
 
-  handleClick = (e) => {
+  handleClick = e => {
     e.preventDefault();
 
     const url = "https://expressjs.com/";
 
-    this.setState({loading: true});
-    fetch(`/.netlify/functions/hello?url=${url}`)
+    this.setState({ loading: true });
+    // TODO: Refactor lambda name
+    fetch(`/.netlify/functions/hello?q=${this.state.value}`)
       .then(response => response.json())
-      .then(json => this.setState({loading: false, msg: json.msg}));
-  }
+      .then(json => this.setState({ loading: false, msg: json.msg }));
+  };
+
+  handleChange = e => {
+    this.setState({ value: e.target.value });
+  };
 
   render() {
-    const {loading, msg} = this.state;
+    const { value, loading, msg } = this.state;
 
-    return <p>
-      <button onClick={this.handleClick}>{loading ? 'Loading...' : 'Call Lambda'}</button><br/>
-      <span>{msg}</span>
-    </p>
+    return (
+      <p>
+        <input onChange={this.handleChange} type="text" value={value} />
+        <button onClick={this.handleClick}>
+          {loading ? "Loading..." : "Call Lambda"}
+        </button>
+        <br />
+        <span>{msg}</span>
+      </p>
+    );
   }
 }
 
@@ -35,7 +49,7 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Facebook post preview</h1>
         </header>
-        <Lambda/>
+        <Lambda />
       </div>
     );
   }
