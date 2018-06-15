@@ -8,6 +8,7 @@
     "url": "https://github.com/hugodias/"
   },
   "dependencies": {
+    "get-urls": "^7.2.0",
     "netlify-lambda": "^0.4.0",
     "open-graph-scraper": "^3.3.0",
     "react": "^16.4.1",
