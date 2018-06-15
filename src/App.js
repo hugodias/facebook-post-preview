@@ -7,7 +7,13 @@ import "./App.css";
 class Lambda extends Component {
   constructor(props) {
     super(props);
-    this.state = { value: null, loading: false, msg: null };
+    this.state = {
+      value: null,
+      loading: false,
+      text: null,
+      meta: {},
+      error: null
+    };
   }
 
   handleClick = e => {
@@ -19,7 +25,14 @@ class Lambda extends Component {
     // TODO: Refactor lambda name
     fetch(`/.netlify/functions/hello?q=${this.state.value}`)
       .then(response => response.json())
-      .then(json => this.setState({ loading: false, msg: json.msg }));
+      .then(json =>
+        this.setState({
+          loading: false,
+          text: json.text,
+          meta: json.meta,
+          error: json.error
+        })
+      );
   };
 
   handleChange = e => {
@@ -37,10 +50,25 @@ class Lambda extends Component {
         </button>
         <br />
         <span>{msg}</span>
+
+        <Preview {...this.state.meta} />
       </p>
     );
   }
 }
+
+const Preview = props => {
+  return (
+    <div>
+      {props.ogImage && props.ogImage.url ? (
+        <img src={props.ogImage.url} />
+      ) : null}
+      <span>{props.ogSiteName}</span>
+      <span>{props.ogTitle}</span>
+      <span>{props.ogDescription}</span>
+    </div>
+  );
+};
 
 class App extends Component {
   render() {

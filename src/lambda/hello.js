@@ -2,7 +2,7 @@ import ogs from "open-graph-scraper";
 import getUrl from "get-urls";
 
 export function handler(event, context, callback) {
-  let text = event.queryStringParameters.q;
+  const text = event.queryStringParameters.q;
   const urls = getUrl(text);
 
   // Return if there is no urls in text
@@ -25,11 +25,32 @@ export function handler(event, context, callback) {
   ogs(options, (error, results) => {
     // TODO: Refactor this
     const statusCode = results.success ? 200 : 500;
-    const body = results.success ? results.data : results.error;
-
+    const body = {
+      meta: statusCode === 200 ? results.data : null,
+      text: cleanText(text),
+      error: statusCode !== 200 ? results.error : null
+    };
+  
     callback(null, {
       statusCode,
       body: JSON.stringify(body)
     });
   });
+}
+
+function cleanText(text) {
+  return text.replace(/(?:https?|ftp):\/\/[\n\S]+/g, "");
+}
+
+function buildResponseObject(statusCode, result, text) {
+  const body = {
+    meta: statusCode === 200 ? result.data : null,
+    text,
+    error: statusCode !== 200 ? result.error : null
+  };
+
+  return {
+    statusCode,
+    body
+  };
 }
