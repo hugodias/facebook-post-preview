@@ -9,7 +9,7 @@ export function handler(event, context, callback) {
   if (!urls.size) {
     return callback(null, {
       statusCode: 200,
-      body: query
+      body: JSON.stringify({ msg: text })
     });
   }
 
@@ -18,7 +18,7 @@ export function handler(event, context, callback) {
 
   const options = { url };
 
-  // TODO: Remove URLS from text 
+  // TODO: Remove URLS from text
 
   // TODO: Build an object with og data and text without URLS
 
