@@ -15,26 +15,13 @@ export function handler(event, context, callback) {
 
   // Retrieve first URL in text - urls are already normalized
   const url = [...urls][0];
-
   const options = { url };
-
-  // TODO: Remove URLS from text
-
-  // TODO: Build an object with og data and text without URLS
 
   ogs(options, (error, results) => {
     // TODO: Refactor this
     const statusCode = results.success ? 200 : 500;
-    const body = {
-      meta: statusCode === 200 ? results.data : null,
-      text: cleanText(text),
-      error: statusCode !== 200 ? results.error : null
-    };
-  
-    callback(null, {
-      statusCode,
-      body: JSON.stringify(body)
-    });
+
+    callback(null, buildResponseObject(statusCode, results, text));
   });
 }
 
@@ -43,14 +30,24 @@ function cleanText(text) {
 }
 
 function buildResponseObject(statusCode, result, text) {
+  let meta = statusCode === 200 ? result.data : null;
+
+  if (meta) {
+    let images = meta.ogImage;
+
+    if (images instanceof Array) {
+      meta.ogImage = images[0];
+    }
+  }
+
   const body = {
-    meta: statusCode === 200 ? result.data : null,
-    text,
+    meta: meta,
+    text: cleanText(text),
     error: statusCode !== 200 ? result.error : null
   };
 
   return {
     statusCode,
-    body
+    body: JSON.stringify(body)
   };
 }
