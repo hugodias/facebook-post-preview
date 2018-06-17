@@ -13,7 +13,7 @@ const ImageWrapper = styled.div`
   padding-top: 51.25%;
   background: url(${props => props.src});
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-position: center;
 `;
 
