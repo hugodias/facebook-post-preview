@@ -15,6 +15,7 @@ const ImageWrapper = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  border-bottom: 0.5px solid #DEDEDE;
 `;
 
 const Info = styled.div`
