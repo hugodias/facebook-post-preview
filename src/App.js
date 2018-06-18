@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Preview from "./components/preview";
+import FacebookMobilePost from "./components/facebook-mobile-post";
 import "./App.css";
 
 /**
@@ -11,7 +12,7 @@ class Lambda extends Component {
     this.state = {
       value: null,
       loading: false,
-      text: null,
+      text: "This is a publication with URL",
       meta: {
         ogSiteName: "Medium",
         ogTitle: "Utilizando o ELK Stack como ferramenta de Business Intelligence",
@@ -59,7 +60,7 @@ class Lambda extends Component {
         <br />
         <span>{msg}</span>
 
-        <Preview {...this.state.meta} />
+        <FacebookMobilePost {...this.state} />
       </div>
     );
   }
