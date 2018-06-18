@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Preview from "./components/preview";
 import FacebookMobilePost from "./components/facebook-mobile-post";
 import Warnings from "./components/warnings";
+import Form from "./components/form";
 import "./App.css";
 
 /**
@@ -16,7 +16,8 @@ class Lambda extends Component {
       text: "This is a publication with URL",
       meta: {
         ogSiteName: "Medium",
-        ogTitle: "Utilizando o ELK Stack como ferramenta de Business Intelligence",
+        ogTitle:
+          "Utilizando o ELK Stack como ferramenta de Business Intelligence"
         // ogDescription: "Como integrar um app Ruby on Rails pelo docker com o ELK Stack",
         // ogImage: {
         //   url: "https://cdn-images-1.medium.com/max/1200/0*3llSqzx4IxQ7TyVP"
@@ -26,27 +27,8 @@ class Lambda extends Component {
     };
   }
 
-  handleClick = e => {
-    e.preventDefault();
-
-    const url = "https://expressjs.com/";
-
-    this.setState({ loading: true });
-    // TODO: Refactor lambda name
-    fetch(`/.netlify/functions/hello?q=${this.state.value}`)
-      .then(response => response.json())
-      .then(json =>
-        this.setState({
-          loading: false,
-          text: json.text,
-          meta: json.meta,
-          error: json.error
-        })
-      );
-  };
-
-  handleChange = e => {
-    this.setState({ value: e.target.value });
+  handleFormSubmitted = data => {
+    this.setState(data);
   };
 
   render() {
@@ -54,20 +36,13 @@ class Lambda extends Component {
 
     return (
       <div>
-        <input onChange={this.handleChange} type="text" value={value} />
-        <button onClick={this.handleClick}>
-          {loading ? "Loading..." : "Call Lambda"}
-        </button>
-        <br />
-        <span>{msg}</span>
-
+        <Form {...this.sate} handleFormSubmitted={this.handleFormSubmitted} />
         <FacebookMobilePost {...this.state} />
         <Warnings {...this.state.meta} />
       </div>
     );
   }
 }
-
 
 class App extends Component {
   render() {

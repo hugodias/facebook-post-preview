@@ -9,7 +9,7 @@ export function handler(event, context, callback) {
   if (!urls.size) {
     return callback(null, {
       statusCode: 200,
-      body: JSON.stringify({ msg: text })
+      body: JSON.stringify({ text: text, meta: null, error: ["Empty url in text"] })
     });
   }
 
