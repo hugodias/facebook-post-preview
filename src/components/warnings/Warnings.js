@@ -4,25 +4,16 @@ import styled from "styled-components";
 class Warnings extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = [
-      ...props,
-      {
-        valid: true
-      }
-    ];
+    this.state = props;
   }
 
-  componentDidMount() {
-    this.check();
-  }
-
-  check() {
+  valid() {
     const { ogImage, ogTitle, ogDescription, ogSiteName } = this.state;
 
-    !ogImage || !ogTitle || !ogDescription || !ogSiteName
-      ? this.setState({ valid: false })
-      : null;
+    return (
+      [ogImage, ogTitle, ogDescription, ogSiteName].filter(item => !!item)
+        .length === 4
+    );
   }
 
   ogImageMissing() {
@@ -42,9 +33,7 @@ class Warnings extends React.Component {
   }
 
   render() {
-    const { valid } = this.state;
-
-    if (valid) return;
+    if (!this.valid()) return;
 
     return (
       <Container>
