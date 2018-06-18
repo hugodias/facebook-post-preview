@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
+const Container = styled.div``;
+const WarningTitle = styled.span``;
+const Title = styled.span``;
+const Description = styled.p``;
+const MissingBlock = styled.div``;
+
 class Warnings extends React.Component {
   constructor(props) {
     super(props);
@@ -33,7 +39,7 @@ class Warnings extends React.Component {
   }
 
   render() {
-    if (!this.valid()) return;
+    if (this.valid()) return null;
 
     return (
       <Container>

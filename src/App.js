@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Preview from "./components/preview";
 import FacebookMobilePost from "./components/facebook-mobile-post";
+import Warnings from "./components/warnings";
 import "./App.css";
 
 /**
@@ -61,6 +62,7 @@ class Lambda extends Component {
         <span>{msg}</span>
 
         <FacebookMobilePost {...this.state} />
+        <Warnings {...this.state.meta} />
       </div>
     );
   }
