@@ -7,15 +7,14 @@ const Container = styled.div`
   width: 375px;
 `;
 const WarningTitle = styled.div`
-font-family: Roboto;
-font-style: normal;
-font-weight: 900;
-line-height: normal;
-font-size: 20px;
-text-align: left;
-
-color: #FE5353;
-padding: 20px 0;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  font-size: 20px;
+  text-align: left;
+  color: #fe5353;
+  padding: 30px 0;
 `;
 const Title = styled.span`
   font-style: normal;
@@ -31,24 +30,23 @@ const Description = styled.p`
   line-height: 28px;
   font-size: 14px;
 
-  color: #000000;
+  color: #4a4a4a;
 
-  a, a:visited {
-    color: #4E6DAF;
+  a,
+  a:visited {
+    color: #4e6daf;
     text-decoration: none;
     font-weight: 600;
   }
 `;
-const MissingBlock = styled.div``;
+const MissingBlock = styled.div`
+  padding-bottom: 20px;
+`;
 
 class Warnings extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = props;
-  }
 
   valid() {
-    const { ogImage, ogTitle, ogDescription, ogSiteName } = this.state;
+    const { ogImage, ogTitle, ogDescription, ogSiteName } = this.props;
 
     return (
       [ogImage, ogTitle, ogDescription, ogSiteName].filter(item => !!item)
@@ -57,7 +55,7 @@ class Warnings extends React.Component {
   }
 
   ogImageMissing() {
-    const { ogImage } = this.state;
+    const { ogImage } = this.props;
 
     if (!ogImage) {
       return (
@@ -65,7 +63,25 @@ class Warnings extends React.Component {
           <Title>The ogImage tag is missing</Title>
           <Description>
             We coudnt find the ogImage tag. Most os social networks use this tag
-            to show as an image. Consider fixing this before sharing this URL. <a href="">Learn more...</a>
+            to show as an image. Consider fixing this before sharing this URL.{" "}
+            <a href="">Learn more...</a>
+          </Description>
+        </MissingBlock>
+      );
+    }
+  }
+
+  ogDescriptionMissing() {
+    const { ogDescription } = this.props;
+
+    if (!ogDescription) {
+      return (
+        <MissingBlock>
+          <Title>The ogDescription tag is missing</Title>
+          <Description>
+            We coudnt find the ogImage tag. Most os social networks use this tag
+            to show as an image. Consider fixing this before sharing this URL.{" "}
+            <a href="">Learn more...</a>
           </Description>
         </MissingBlock>
       );
@@ -79,6 +95,7 @@ class Warnings extends React.Component {
       <Container>
         <WarningTitle>Woops, we found some issues!</WarningTitle>
         {this.ogImageMissing()}
+        {this.ogDescriptionMissing()}
       </Container>
     );
   }

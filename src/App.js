@@ -17,7 +17,7 @@ class Lambda extends Component {
       meta: {
         ogSiteName: "Medium",
         ogTitle: "Utilizando o ELK Stack como ferramenta de Business Intelligence",
-        ogDescription: "Como integrar um app Ruby on Rails pelo docker com o ELK Stack",
+        // ogDescription: "Como integrar um app Ruby on Rails pelo docker com o ELK Stack",
         // ogImage: {
         //   url: "https://cdn-images-1.medium.com/max/1200/0*3llSqzx4IxQ7TyVP"
         // }
