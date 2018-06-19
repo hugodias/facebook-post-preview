@@ -31,18 +31,18 @@ const WarningTitle = styled.div`
 const Title = styled.span`
   font-style: normal;
   font-weight: bold;
-  line-height: 20px;
+  line-height: 1.5em;
   font-size: 16px;
 
   color: #4a4a4a;
 `;
 const Description = styled.p`
   font-style: normal;
-  font-weight: normal;
-  line-height: 28px;
-  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.5em;
+  font-size: 16px;
 
-  color: #4a4a4a;
+  color: rgba(0,0,0, 0.8);
 
   a,
   a:visited {

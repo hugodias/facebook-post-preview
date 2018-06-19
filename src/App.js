@@ -53,7 +53,7 @@ const Paragraph = styled.p`
   font-size: 18px;
   font-weight: 300;
   letter-spacing: 0.5px;
-  line-height: 28px;
+  line-height: 1.5em;
   color: #4a4a4a;
   text-rendering: optimizeLegibility;
 `;
