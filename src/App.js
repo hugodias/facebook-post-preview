@@ -29,11 +29,9 @@ class App extends Component {
   };
 
   render() {
-    const { value, loading, msg } = this.state;
-
     return (
       <div>
-        <Form {...this.sate} handleFormSubmitted={this.handleFormSubmitted} />
+        <Form {...this.state} handleFormSubmitted={this.handleFormSubmitted} />
         <FacebookMobilePost {...this.state} />
         <Warnings {...this.state.meta} />
       </div>
