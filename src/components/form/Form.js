@@ -15,6 +15,7 @@ const Textarea = styled.textarea`
   font-size: 14px;
   color: #000;
   line-height: 20px;
+  font-family: "Roboto", sans-serif;
   &:focus {
     outline: none;
   }
@@ -67,13 +68,15 @@ class Form extends Component {
 
     this.setState({ loading: true });
 
+    this.props.processingStarted();
+
     fetch(`/.netlify/functions/open-graph-preview?q=${this.state.text}`)
       .then(response => response.json())
       .then(json => {
         this.setState({
           loading: false
         });
-        this.props.handleFormSubmitted(json);
+        this.props.formSubmitted(json);
       });
   };
 
