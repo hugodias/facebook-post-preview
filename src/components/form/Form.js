@@ -26,8 +26,7 @@ class Form extends Component {
 
     this.setState({ loading: true });
 
-    // TODO: Refactor lambda name
-    fetch(`/.netlify/functions/hello?q=${this.state.value}`)
+    fetch(`/.netlify/functions/open-graph-preview?q=${this.state.value}`)
       .then(response => response.json())
       .then(json => {
         this.setState({
