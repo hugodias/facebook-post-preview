@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import sad from "../../icons/sad.svg";
 
 const Container = styled.div`
   font-family: "Roboto";
@@ -15,6 +16,17 @@ const WarningTitle = styled.div`
   text-align: left;
   color: #fe5353;
   padding: 30px 0;
+  display: inline-block;
+
+  span {
+    vertical-align: middle;
+    margin-left: 10px;
+  }
+  img {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+  }
 `;
 const Title = styled.span`
   font-style: normal;
@@ -93,7 +105,7 @@ class Warnings extends React.Component {
 
     return (
       <Container  style={this.props.style}>
-        <WarningTitle>Woops, we found some issues!</WarningTitle>
+        <WarningTitle><img src={sad} /><span>Woops, we found some issues!</span></WarningTitle>
         {this.ogImageMissing()}
         {this.ogDescriptionMissing()}
       </Container>
