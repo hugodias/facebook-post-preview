@@ -6,6 +6,7 @@ const Container = styled.div`
   width: 375px;
   display: block;
   box-shadow: 0px 9px 12px rgba(0, 0, 0, 0.06);
+  background: #FFF;
 `;
 const Header = styled.div`
   display: flex;
@@ -51,7 +52,7 @@ const Footer = styled.div``;
 
 const FacebookMobilePost = props => {
   return (
-    <Container>
+    <Container style={props.style}>
       <Header>
         <Avatar src="https://avatars.io/instagram/hugooovictor" />
         <UserInfo>

@@ -92,7 +92,7 @@ class Warnings extends React.Component {
     if (this.valid()) return null;
 
     return (
-      <Container>
+      <Container  style={this.props.style}>
         <WarningTitle>Woops, we found some issues!</WarningTitle>
         {this.ogImageMissing()}
         {this.ogDescriptionMissing()}

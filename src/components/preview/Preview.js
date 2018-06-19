@@ -3,7 +3,8 @@ import styled from "styled-components";
 
 const Container = styled.div`
   width: 375px;
-  font-family: "Roboto", sans-serif;
+  border-top: 0.5px solid #DEDEDE;
+  border-bottom: 0.5px solid #DEDEDE;
 `;
 
 const ImageWrapper = styled.div`
