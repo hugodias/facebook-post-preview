@@ -4,10 +4,7 @@ import Warnings from "./components/warnings";
 import Form from "./components/form";
 import "./App.css";
 
-/**
- * TODO: Move this
- */
-class Lambda extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -39,19 +36,6 @@ class Lambda extends Component {
         <Form {...this.sate} handleFormSubmitted={this.handleFormSubmitted} />
         <FacebookMobilePost {...this.state} />
         <Warnings {...this.state.meta} />
-      </div>
-    );
-  }
-}
-
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Facebook post preview</h1>
-        </header>
-        <Lambda />
       </div>
     );
   }
