@@ -54,14 +54,13 @@ const Post = styled.div`
   padding: 0 12px 12px 12px;
 `;
 const Footer = styled.div`
-  border: 0.5px solid #DCDEE3;
-  border-top: 0px;
+  border: 0.5px solid #dcdee3;
 `;
 const Likebar = styled.div`
   display: flex;
   margin: 0 20px;
   padding: 10px 0;
-  border-bottom: 0.5px solid #DCDEE3;
+  border-bottom: 0.5px solid #dcdee3;
 
   img {
     width: 16px;
@@ -71,15 +70,15 @@ const Likebar = styled.div`
   span {
     align-self: center;
     color: #616770;
-    font-size: 13px; 
+    font-size: 13px;
     padding-left: 10px;
   }
 `;
 
 const Actions = styled.div`
-display: flex;
-align-items: center;
-justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 10px 20px;
 `;
 
@@ -97,7 +96,7 @@ const Action = styled.div`
     font-weight: bold;
     font-size: 13px;
     padding-left: 10px;
-    
+
     display: inline-block;
   }
 `;
@@ -136,16 +135,16 @@ class FacebookMobilePost extends Component {
             <Action>
               <img src={hotlike} />
               <div>Like</div>
-              </Action>
-              <Action>
+            </Action>
+            <Action>
               <img src={comment} />
               <div>Comment</div>
-              </Action>
-              <Action >
-              <img style={{marginLeft: 20}} src={share} />
+            </Action>
+            <Action>
+              <img style={{ marginLeft: 20 }} src={share} />
               <div>Share</div>
-              </Action>
-            </Actions>
+            </Action>
+          </Actions>
         </Footer>
       </Container>
     );

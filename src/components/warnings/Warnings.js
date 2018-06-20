@@ -101,7 +101,7 @@ class Warnings extends Component {
   }
 
   render() {
-    if (this.valid() || !this.props.started) return null;
+    if (this.valid() || !this.props.started || this.props.loading) return null;
 
     return (
       <Container  style={this.props.style}>

@@ -3,8 +3,7 @@ import styled from "styled-components";
 
 const Container = styled.div`
   width: 375px;
-  border-top: 0.5px solid #DEDEDE;
-  border-bottom: 0.5px solid #DEDEDE;
+  border-top: 0.5px solid #dedede;
 `;
 
 const ImageWrapper = styled.div`
@@ -16,7 +15,7 @@ const ImageWrapper = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  border-bottom: 0.5px solid #DEDEDE;
+  border-bottom: 0.5px solid #dedede;
 `;
 
 const Info = styled.div`
