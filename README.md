@@ -1,5 +1,7 @@
 ### Facebook post preview
 
+![screenshot](https://raw.githubusercontent.com/hugodias/facebook-post-preview/master/public/screenshot.png)
+
 ## Local Development
 
 Before developing, clone the repository and run `yarn` from the root of the repo to install all dependencies.

@@ -56,6 +56,11 @@ const Paragraph = styled.p`
   line-height: 1.5em;
   color: #4a4a4a;
   text-rendering: optimizeLegibility;
+
+  a {
+    color: #4a4a4a;
+    font-weight: bold; 
+  }
 `;
 
 class App extends Component {
@@ -108,7 +113,7 @@ class App extends Component {
             </Paragraph>
 
             <Paragraph>
-              It's free and <strong>Open Source</strong>.
+              It's free and <a href="https://github.com/hugodias/facebook-post-preview" target="_blank">Open Source</a>.
             </Paragraph>
           </Info>
         </Col>
