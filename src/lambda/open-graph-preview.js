@@ -23,16 +23,13 @@ export function handler(event, context, callback) {
   const options = { url };
 
   ogs(options, (error, results) => {
-    // TODO: Refactor this
     const statusCode = results.success ? 200 : 500;
-
     callback(null, buildResponseObject(statusCode, results, text));
   });
 }
 
 function getUrlDomain(url) {
   const urlObj = urlParser.parse(url);
-  console.log(urlObj);
   return urlObj.host;
 }
 
@@ -56,8 +53,6 @@ function buildResponseObject(statusCode, result, text) {
       meta.ogUrl = getUrlDomain(meta.ogUrl);
     }
   }
-
-  console.log(meta);
 
   const body = {
     meta: meta,
