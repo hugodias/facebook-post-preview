@@ -9,7 +9,11 @@ export function handler(event, context, callback) {
   if (!urls.size) {
     return callback(null, {
       statusCode: 200,
-      body: JSON.stringify({ text: text, meta: null, error: ["Empty url in text"] })
+      body: JSON.stringify({
+        text: text,
+        meta: null,
+        error: ["Empty url in text"]
+      })
     });
   }
 
@@ -25,6 +29,11 @@ export function handler(event, context, callback) {
   });
 }
 
+function getUrlDomain(url) {
+  const urlObj = new URL(url);
+  return urlObj.hostname;
+}
+
 function cleanText(text) {
   return text.replace(/(?:https?|ftp):\/\/[\n\S]+/g, "");
 }
@@ -38,7 +47,15 @@ function buildResponseObject(statusCode, result, text) {
     if (images instanceof Array) {
       meta.ogImage = images[0];
     }
+
+    let domain = meta.ogUrl;
+
+    if (domain) {
+      meta.ogUrl = getUrlDomain(meta.ogUrl);
+    }
   }
+
+  console.log(meta);
 
   const body = {
     meta: meta,

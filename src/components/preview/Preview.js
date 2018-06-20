@@ -62,7 +62,7 @@ const Preview = props => {
         <ImageWrapper src={props.ogImage.url} />
       ) : null}
       <Info>
-        <SiteName>{props.ogSiteName}</SiteName>
+        <SiteName>{props.ogUrl}</SiteName>
         <Title>{props.ogTitle}</Title>
         <Description>{props.ogDescription}</Description>
       </Info>

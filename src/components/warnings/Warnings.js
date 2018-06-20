@@ -42,7 +42,7 @@ const Description = styled.p`
   line-height: 1.5em;
   font-size: 16px;
 
-  color: rgba(0,0,0, 0.8);
+  color: rgba(0, 0, 0, 0.8);
 
   a,
   a:visited {
@@ -56,14 +56,51 @@ const MissingBlock = styled.div`
 `;
 
 class Warnings extends Component {
-
   valid() {
-    const { ogImage, ogTitle, ogDescription, ogSiteName } = this.props;
+    const { ogImage, ogTitle, ogDescription, ogUrl } = this.props;
 
     return (
-      [ogImage, ogTitle, ogDescription, ogSiteName].filter(item => !!item)
+      [ogImage, ogTitle, ogDescription, ogUrl].filter(item => !!item)
         .length === 4
     );
+  }
+
+  ogUrlMissing() {
+    const { ogUrl } = this.props;
+
+    if (!ogUrl) {
+      return (
+        <MissingBlock>
+          <Title>The ogUrl tag is missing</Title>
+          <Description>
+            The canonical URL of your object that will be used as its permanent
+            ID in the graph, e.g., "http://www.imdb.com/title/tt0117500/".
+            <a href="http://ogp.me/#metadata" target="_blank">
+              Learn more...
+            </a>
+          </Description>
+        </MissingBlock>
+      );
+    }
+  }
+
+  ogTitleMissing() {
+    const { ogTitle } = this.props;
+
+    if (!ogTitle) {
+      return (
+        <MissingBlock>
+          <Title>The ogTitle tag is missing</Title>
+          <Description>
+            We coudnt find the ogTitle tag. The title of your object as it
+            should appear within the graph, e.g., "The Rock".
+            <a href="http://ogp.me/#metadata" target="_blank">
+              Learn more...
+            </a>
+          </Description>
+        </MissingBlock>
+      );
+    }
   }
 
   ogImageMissing() {
@@ -74,9 +111,11 @@ class Warnings extends Component {
         <MissingBlock>
           <Title>The ogImage tag is missing</Title>
           <Description>
-            We coudnt find the ogImage tag. Most os social networks use this tag
-            to show as an image. Consider fixing this before sharing this URL.{" "}
-            <a href="">Learn more...</a>
+            We coudnt find the ogImage tag. An image URL which should represent
+            your object within the graph.
+            <a href="http://ogp.me/#metadata" target="_blank">
+              Learn more...
+            </a>
           </Description>
         </MissingBlock>
       );
@@ -91,9 +130,11 @@ class Warnings extends Component {
         <MissingBlock>
           <Title>The ogDescription tag is missing</Title>
           <Description>
-            We coudnt find the ogImage tag. Most os social networks use this tag
-            to show as an image. Consider fixing this before sharing this URL.{" "}
-            <a href="">Learn more...</a>
+            We coudnt find the ogDescription tag. A one to two sentence
+            description of your object.{" "}
+            <a href="http://ogp.me/#optional" target="_blank">
+              Learn more...
+            </a>
           </Description>
         </MissingBlock>
       );
@@ -104,10 +145,15 @@ class Warnings extends Component {
     if (this.valid() || !this.props.started || this.props.loading) return null;
 
     return (
-      <Container  style={this.props.style}>
-        <WarningTitle><img src={sad} /><span>Woops, we found some issues!</span></WarningTitle>
-        {this.ogImageMissing()}
+      <Container style={this.props.style}>
+        <WarningTitle>
+          <img src={sad} />
+          <span>Woops, we found some issues!</span>
+        </WarningTitle>
+        {this.ogTitleMissing()}
         {this.ogDescriptionMissing()}
+        {this.ogImageMissing()}
+        {this.ogUrlMissing()}
       </Container>
     );
   }

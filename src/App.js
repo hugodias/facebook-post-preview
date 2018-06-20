@@ -125,6 +125,7 @@ class App extends Component {
           <Warnings
             {...this.state.meta}
             loading={loading}
+            started={started}
             style={{ float: "right" }}
           />
         </Col>
