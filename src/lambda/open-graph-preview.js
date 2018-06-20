@@ -1,5 +1,6 @@
 import ogs from "open-graph-scraper";
 import getUrl from "get-urls";
+import urlParser from "url";
 
 export function handler(event, context, callback) {
   const text = event.queryStringParameters.q;
@@ -30,8 +31,9 @@ export function handler(event, context, callback) {
 }
 
 function getUrlDomain(url) {
-  const urlObj = new URL(url);
-  return urlObj.hostname;
+  const urlObj = urlParser.parse(url);
+  console.log(urlObj);
+  return urlObj.host;
 }
 
 function cleanText(text) {
