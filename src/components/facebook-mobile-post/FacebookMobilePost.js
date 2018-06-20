@@ -1,12 +1,13 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import Preview from "../preview";
+import MobileCardLoader from "../mobile-card-loader/MobileCardLoader";
 
 const Container = styled.div`
   width: 375px;
   display: block;
   box-shadow: 0px 9px 12px rgba(0, 0, 0, 0.06);
-  background: #FFF;
+  background: #fff;
 `;
 const Header = styled.div`
   display: flex;
@@ -50,23 +51,35 @@ const Post = styled.div`
 `;
 const Footer = styled.div``;
 
-const FacebookMobilePost = props => {
-  return (
-    <Container style={props.style}>
-      <Header>
-        <Avatar src="https://avatars.io/instagram/hugooovictor" />
-        <UserInfo>
-          <Username>Hugo Dias</Username>
-          <Timestamp>Just now - Amsterdam, Netherlands</Timestamp>
-        </UserInfo>
-      </Header>
-      <Body>
-        <Post>{props.text}</Post>
-        <Preview {...props.meta} />
-      </Body>
-      <Footer />
-    </Container>
-  );
-};
+class FacebookMobilePost extends Component {
+  render() {
+    const { loading, style, text, meta } = this.props;
+
+    if (loading) {
+      return (
+        <Container style={{ padding: 10 }} className="fade-out">
+          <MobileCardLoader />
+        </Container>
+      );
+    }
+
+    return (
+      <Container style={style} className="fade-in">
+        <Header>
+          <Avatar src="https://avatars.io/instagram/hugooovictor" />
+          <UserInfo>
+            <Username>Hugo Dias</Username>
+            <Timestamp>Just now - Amsterdam, Netherlands</Timestamp>
+          </UserInfo>
+        </Header>
+        <Body>
+          <Post>{text}</Post>
+          {meta ? <Preview {...meta} /> : null}
+        </Body>
+        <Footer />
+      </Container>
+    );
+  }
+}
 
 export default FacebookMobilePost;

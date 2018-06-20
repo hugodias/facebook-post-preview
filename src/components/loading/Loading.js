@@ -11,7 +11,7 @@ const Icon = styled.img`
   height: 40px;
 `;
 
-const LoadingText = styled.p`
+const BoldText = styled.p`
   font-weight: bold;
   font-size: 16px;
   margin: 0 0 20px 0;
@@ -20,7 +20,7 @@ const LoadingText = styled.p`
   text-align: center;
 `;
 
-const DoneText = styled.i`
+const LightText = styled.i`
   color: #fff;
   font-size: 16px;
   display: block;
@@ -29,10 +29,14 @@ const DoneText = styled.i`
 
 const Loading = props => {
   return (
-    <Container>
-			{ !props.loading ? <DoneText>Voilà!</DoneText> : null }
-			{ props.loading ? <LoadingText>Processing ...</LoadingText> : null }
-      
+    <Container className={props.className}>
+      {!props.loading ? <LightText>Voilà!</LightText> : null}
+      {props.loading ? (
+        <BoldText>
+          {props.started ? "Processing ..." : "Waiting for you ..."}
+        </BoldText>
+      ) : null}
+
       <Icon src={haha} />
     </Container>
   );

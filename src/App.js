@@ -62,33 +62,27 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: null,
-      loading: false,
-      text: "This is a publication with URL",
-      meta: {
-        ogSiteName: "Medium",
-        ogTitle:
-          "Utilizando o ELK Stack como ferramenta de Business Intelligence"
-        // ogDescription: "Como integrar um app Ruby on Rails pelo docker com o ELK Stack",
-        // ogImage: {
-        //   url: "https://cdn-images-1.medium.com/max/1200/0*3llSqzx4IxQ7TyVP"
-        // }
-      },
+      started: false,
+      loading: true,
+      text: "This is a publication with URL https://codeburst.io/extracting-a-react-js-component-and-publishing-it-on-npm-2a49096757f5",
+      meta: {},
       error: null
     };
   }
 
   handleProcessingStarted = () => {
-    this.setState({ loading: true });
+    this.setState({ started: true, loading: true });
   };
 
   handleFormSubmitted = data => {
-    const newState = {...data};
+    const newState = { ...data };
     newState.loading = false;
     this.setState(newState);
   };
 
   render() {
+    const { started, loading } = this.state;
+
     return (
       <Row>
         <Col align="left">
@@ -119,12 +113,20 @@ class App extends Component {
           </Info>
         </Col>
         <Col>
-          <Loading loading={this.state.loading} />
+          <Loading
+            className="loading-block"
+            started={started}
+            loading={loading}
+          />
         </Col>
         <Col align="right" style={{ marginTop: 70 }}>
           <Subtitle style={{ MarginTop: 50 }}>Preview result</Subtitle>
           <FacebookMobilePost {...this.state} style={{ float: "right" }} />
-          <Warnings {...this.state.meta} style={{ float: "right" }} />
+          <Warnings
+            {...this.state.meta}
+            loading={loading}
+            style={{ float: "right" }}
+          />
         </Col>
       </Row>
     );

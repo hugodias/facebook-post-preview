@@ -55,7 +55,7 @@ const MissingBlock = styled.div`
   padding-bottom: 20px;
 `;
 
-class Warnings extends React.Component {
+class Warnings extends Component {
 
   valid() {
     const { ogImage, ogTitle, ogDescription, ogSiteName } = this.props;
@@ -101,7 +101,7 @@ class Warnings extends React.Component {
   }
 
   render() {
-    if (this.valid()) return null;
+    if (this.valid() || !this.props.started) return null;
 
     return (
       <Container  style={this.props.style}>
