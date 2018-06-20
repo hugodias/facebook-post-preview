@@ -41,7 +41,7 @@ const Description = styled.p`
   font-weight: 300;
   line-height: 1.5em;
   font-size: 16px;
-
+  margin-top: 5px;
   color: rgba(0, 0, 0, 0.8);
 
   a,
@@ -49,6 +49,8 @@ const Description = styled.p`
     color: #4e6daf;
     text-decoration: none;
     font-weight: 600;
+    font-size: 14px;
+    margin-left: 4px;
   }
 `;
 const MissingBlock = styled.div`
@@ -74,7 +76,7 @@ class Warnings extends Component {
           <Title>The ogUrl tag is missing</Title>
           <Description>
             The canonical URL of your object that will be used as its permanent
-            ID in the graph, e.g., "http://www.imdb.com/title/tt0117500/".
+            ID in the graph, e.g., "http://imdb.com/movies".<br/>
             <a href="http://ogp.me/#metadata" target="_blank">
               Learn more...
             </a>
@@ -92,8 +94,7 @@ class Warnings extends Component {
         <MissingBlock>
           <Title>The ogTitle tag is missing</Title>
           <Description>
-            We coudnt find the ogTitle tag. The title of your object as it
-            should appear within the graph, e.g., "The Rock".
+            The title of your object as it should appear within the graph, e.g., "The Rock".
             <a href="http://ogp.me/#metadata" target="_blank">
               Learn more...
             </a>
@@ -111,8 +112,7 @@ class Warnings extends Component {
         <MissingBlock>
           <Title>The ogImage tag is missing</Title>
           <Description>
-            We coudnt find the ogImage tag. An image URL which should represent
-            your object within the graph.
+            An image URL which should represent your object within the graph.
             <a href="http://ogp.me/#metadata" target="_blank">
               Learn more...
             </a>
@@ -130,8 +130,7 @@ class Warnings extends Component {
         <MissingBlock>
           <Title>The ogDescription tag is missing</Title>
           <Description>
-            We coudnt find the ogDescription tag. A one to two sentence
-            description of your object.{" "}
+            A one to two sentence description of your object.{" "}
             <a href="http://ogp.me/#optional" target="_blank">
               Learn more...
             </a>

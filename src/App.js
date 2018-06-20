@@ -102,14 +102,14 @@ class App extends Component {
           <Info>
             <Lead>What is this?</Lead>
             <Paragraph>
-              This tool scraps an URL and try to simulate how facebook is going
+              This tool scraps an URL and tries to simulate how facebook is going
               to render a post on the social network. We use Open Graph as
               primary source of information and website meta tags such as title
               and description as fallbacks.
             </Paragraph>
 
             <Paragraph>
-              Paste a text with an URL and press the button.
+              Paste a text with an URL and press the button to see the preview.
             </Paragraph>
 
             <Paragraph>
