@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import Preview from "../preview";
 import MobileCardLoader from "../mobile-card-loader/MobileCardLoader";
+import like from "../../icons/like.svg";
+import hotlike from "../../icons/hotlike.svg";
+import comment from "../../icons/comment.svg";
+import share from "../../icons/share.svg";
 
 const Container = styled.div`
   width: 375px;
@@ -49,7 +53,54 @@ const Post = styled.div`
   display: block;
   padding: 0 12px 12px 12px;
 `;
-const Footer = styled.div``;
+const Footer = styled.div`
+  border: 0.5px solid #DCDEE3;
+  border-top: 0px;
+`;
+const Likebar = styled.div`
+  display: flex;
+  margin: 0 20px;
+  padding: 10px 0;
+  border-bottom: 0.5px solid #DCDEE3;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  span {
+    align-self: center;
+    color: #616770;
+    font-size: 13px; 
+    padding-left: 10px;
+  }
+`;
+
+const Actions = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+  padding: 10px 20px;
+`;
+
+const Action = styled.div`
+  flex: 1;
+  align-self: center;
+  img {
+    width: 16px;
+    height: 15px;
+    align-self: center;
+  }
+
+  div {
+    color: #616770;
+    font-weight: bold;
+    font-size: 13px;
+    padding-left: 10px;
+    
+    display: inline-block;
+  }
+`;
 
 class FacebookMobilePost extends Component {
   render() {
@@ -76,7 +127,26 @@ class FacebookMobilePost extends Component {
           <Post>{text}</Post>
           {meta ? <Preview {...meta} /> : null}
         </Body>
-        <Footer />
+        <Footer>
+          <Likebar>
+            <img src={like} />
+            <span>Chuck Norris</span>
+          </Likebar>
+          <Actions>
+            <Action>
+              <img src={hotlike} />
+              <div>Like</div>
+              </Action>
+              <Action>
+              <img src={comment} />
+              <div>Comment</div>
+              </Action>
+              <Action >
+              <img style={{marginLeft: 20}} src={share} />
+              <div>Share</div>
+              </Action>
+            </Actions>
+        </Footer>
       </Container>
     );
   }
