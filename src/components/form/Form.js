@@ -45,6 +45,11 @@ const Button = styled.button`
   height: 32px;
   cursor: pointer;
   flex-grow: 2;
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
 `;
 const Avatar = styled.img`
   border-radius: 50%;
@@ -84,7 +89,7 @@ class Form extends Component {
   };
 
   render() {
-    const { text } = this.state;
+    const { text, loading } = this.state;
 
     return (
       <Container>
@@ -95,7 +100,7 @@ class Form extends Component {
           </Block>
           <Divider />
           <Block>
-            <Button>Preview</Button>
+            <Button disabled={loading}>Preview</Button>
           </Block>
         </FormField>
       </Container>
