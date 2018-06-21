@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
-  width: 375px;
+  max-width: 375px;
   border-top: 0.5px solid #dedede;
 `;
 

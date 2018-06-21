@@ -5,7 +5,8 @@ import sad from "../../icons/sad.svg";
 const Container = styled.div`
   font-family: "Roboto";
   -webkit-font-smoothing: antialiased;
-  width: 375px;
+  max-width: 375px;
+  width: 100%;
 `;
 const WarningTitle = styled.div`
   font-family: Roboto;
