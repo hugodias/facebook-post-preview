@@ -116,7 +116,7 @@ class FacebookMobilePost extends Component {
     return (
       <Container style={style} className="fade-in">
         <Header>
-          <Avatar src="https://avatars.io/instagram/hugooovictor" />
+          <Avatar alt="Hugooodias Avatar" src="https://avatars.io/instagram/hugooovictor" />
           <UserInfo>
             <Username>Hugo Dias</Username>
             <Timestamp>Just now - Amsterdam, Netherlands</Timestamp>
@@ -128,20 +128,20 @@ class FacebookMobilePost extends Component {
         </Body>
         <Footer>
           <Likebar>
-            <img src={like} />
+            <img src={like} alt="Like icon" />
             <span>Chuck Norris</span>
           </Likebar>
           <Actions>
             <Action>
-              <img src={hotlike} />
+              <img src={hotlike}  alt="Like icon" />
               <div>Like</div>
             </Action>
             <Action>
-              <img src={comment} />
+              <img src={comment}  alt="Comment icon"/>
               <div>Comment</div>
             </Action>
             <Action>
-              <img style={{ marginLeft: 20 }} src={share} />
+              <img style={{ marginLeft: 20 }} alt="Share icon" src={share} />
               <div>Share</div>
             </Action>
           </Actions>

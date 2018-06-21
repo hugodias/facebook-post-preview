@@ -4,12 +4,6 @@ import Warnings from "./components/warnings";
 import Form from "./components/form";
 import Loading from "./components/loading";
 import styled from "styled-components";
-import like from "./icons/like.svg";
-import wow from "./icons/wow.svg";
-import haha from "./icons/haha.svg";
-import love from "./icons/love.svg";
-import sad from "./icons/sad.svg";
-import angry from "./icons/angry.svg";
 
 const Row = styled.div`
   display: flex;
@@ -59,7 +53,7 @@ const Paragraph = styled.p`
 
   a {
     color: #4a4a4a;
-    font-weight: bold; 
+    font-weight: bold;
   }
 `;
 
@@ -69,7 +63,8 @@ class App extends Component {
     this.state = {
       started: false,
       loading: true,
-      text: "This is a publication with URL https://codeburst.io/extracting-a-react-js-component-and-publishing-it-on-npm-2a49096757f5",
+      text:
+        "This is a publication with URL https://codeburst.io/extracting-a-react-js-component-and-publishing-it-on-npm-2a49096757f5",
       meta: {},
       error: null
     };
@@ -90,6 +85,14 @@ class App extends Component {
 
     return (
       <Row>
+        <a href="https://github.com/hugodias/facebook-post-preview">
+          <img
+            style={{position: "absolute", top: 0, left: 0, border: 0}}
+            rel="noopener noreferrer"
+            src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png"
+            alt="Fork me on GitHub"
+          />
+        </a>
         <Col align="left">
           <Title>Facebook post preview</Title>
           <Subtitle>Paste a text with an URL and press the button</Subtitle>
@@ -102,8 +105,8 @@ class App extends Component {
           <Info>
             <Lead>What is this?</Lead>
             <Paragraph>
-              This tool scraps an URL and tries to simulate how facebook is going
-              to render a post on the social network. We use Open Graph as
+              This tool scraps an URL and tries to simulate how facebook is
+              going to render a post on the social network. We use Open Graph as
               primary source of information and website meta tags such as title
               and description as fallbacks.
             </Paragraph>
@@ -113,7 +116,14 @@ class App extends Component {
             </Paragraph>
 
             <Paragraph>
-              It's free and <a href="https://github.com/hugodias/facebook-post-preview" target="_blank">Open Source</a>.
+              It's free and{" "}
+              <a
+                href="https://github.com/hugodias/facebook-post-preview"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                Open Source
+              </a>.
             </Paragraph>
           </Info>
         </Col>

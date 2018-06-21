@@ -77,7 +77,7 @@ class Warnings extends Component {
           <Description>
             The canonical URL of your object that will be used as its permanent
             ID in the graph, e.g., "http://imdb.com/movies".<br/>
-            <a href="http://ogp.me/#metadata" target="_blank">
+            <a href="http://ogp.me/#metadata" rel="noopener noreferrer" target="_blank">
               Learn more...
             </a>
           </Description>
@@ -95,7 +95,7 @@ class Warnings extends Component {
           <Title>The ogTitle tag is missing</Title>
           <Description>
             The title of your object as it should appear within the graph, e.g., "The Rock".
-            <a href="http://ogp.me/#metadata" target="_blank">
+            <a href="http://ogp.me/#metadata" rel="noopener noreferrer" target="_blank">
               Learn more...
             </a>
           </Description>
@@ -113,7 +113,7 @@ class Warnings extends Component {
           <Title>The ogImage tag is missing</Title>
           <Description>
             An image URL which should represent your object within the graph.
-            <a href="http://ogp.me/#metadata" target="_blank">
+            <a href="http://ogp.me/#metadata" rel="noopener noreferrer" target="_blank">
               Learn more...
             </a>
           </Description>
@@ -131,7 +131,7 @@ class Warnings extends Component {
           <Title>The ogDescription tag is missing</Title>
           <Description>
             A one to two sentence description of your object.{" "}
-            <a href="http://ogp.me/#optional" target="_blank">
+            <a href="http://ogp.me/#optional" rel="noopener noreferrer" target="_blank">
               Learn more...
             </a>
           </Description>
@@ -146,7 +146,7 @@ class Warnings extends Component {
     return (
       <Container style={this.props.style}>
         <WarningTitle>
-          <img src={sad} />
+          <img src={sad} alt="Sad icon" />
           <span>Woops, we found some issues!</span>
         </WarningTitle>
         {this.ogTitleMissing()}
