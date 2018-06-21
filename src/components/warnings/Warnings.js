@@ -62,8 +62,8 @@ class Warnings extends Component {
     const { ogImage, ogTitle, ogDescription, ogUrl } = this.props;
 
     return (
-      [ogImage, ogTitle, ogDescription, ogUrl].filter(item => !!item)
-        .length === 4
+      [ogImage, ogTitle, ogDescription, ogUrl].filter(item => !!item).length ===
+      4
     );
   }
 
@@ -76,8 +76,12 @@ class Warnings extends Component {
           <Title>The ogUrl tag is missing</Title>
           <Description>
             The canonical URL of your object that will be used as its permanent
-            ID in the graph, e.g., "http://imdb.com/movies".<br/>
-            <a href="http://ogp.me/#metadata" rel="noopener noreferrer" target="_blank">
+            ID in the graph, e.g., "http://imdb.com/movies".<br />
+            <a
+              href="http://ogp.me/#metadata"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               Learn more...
             </a>
           </Description>
@@ -94,8 +98,13 @@ class Warnings extends Component {
         <MissingBlock>
           <Title>The ogTitle tag is missing</Title>
           <Description>
-            The title of your object as it should appear within the graph, e.g., "The Rock".
-            <a href="http://ogp.me/#metadata" rel="noopener noreferrer" target="_blank">
+            The title of your object as it should appear within the graph, e.g.,
+            "The Rock".
+            <a
+              href="http://ogp.me/#metadata"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               Learn more...
             </a>
           </Description>
@@ -113,7 +122,11 @@ class Warnings extends Component {
           <Title>The ogImage tag is missing</Title>
           <Description>
             An image URL which should represent your object within the graph.
-            <a href="http://ogp.me/#metadata" rel="noopener noreferrer" target="_blank">
+            <a
+              href="http://ogp.me/#metadata"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               Learn more...
             </a>
           </Description>
@@ -131,7 +144,11 @@ class Warnings extends Component {
           <Title>The ogDescription tag is missing</Title>
           <Description>
             A one to two sentence description of your object.{" "}
-            <a href="http://ogp.me/#optional" rel="noopener noreferrer" target="_blank">
+            <a
+              href="http://ogp.me/#optional"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               Learn more...
             </a>
           </Description>

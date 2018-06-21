@@ -87,7 +87,7 @@ class App extends Component {
       <Row>
         <a href="https://github.com/hugodias/facebook-post-preview">
           <img
-            style={{position: "absolute", top: 0, left: 0, border: 0}}
+            style={{ position: "absolute", top: 0, left: 0, border: 0 }}
             rel="noopener noreferrer"
             src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png"
             alt="Fork me on GitHub"

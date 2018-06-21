@@ -5,7 +5,7 @@ const Container = styled.div`
   box-shadow: 0px 9px 12px rgba(0, 0, 0, 0.06);
   width: 435px;
   border-radius: 3px;
-  background: #FFF;
+  background: #fff;
 `;
 const Textarea = styled.textarea`
   flex: 2;
@@ -19,7 +19,6 @@ const Textarea = styled.textarea`
   &:focus {
     outline: none;
   }
-
 `;
 const FormField = styled.form``;
 const Divider = styled.hr`
