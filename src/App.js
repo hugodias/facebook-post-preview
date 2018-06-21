@@ -26,7 +26,7 @@ const Col = styled.div`
     display: ${props => (props.middle ? "none" : "block")};
     margin-top: 0;
     margin: 0 auto;
-    padding: 30px;
+    padding: ${props => (props.right ? "0" : "30px")};
   }
 `;
 

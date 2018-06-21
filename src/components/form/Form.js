@@ -6,6 +6,10 @@ const Container = styled.div`
   width: 435px;
   border-radius: 3px;
   background: #fff;
+
+  @media all and (max-width: 960px) {
+    width: 100%;
+  }
 `;
 const Textarea = styled.textarea`
   flex: 2;
