@@ -8,8 +8,9 @@ import comment from "../../icons/comment.svg";
 import share from "../../icons/share.svg";
 
 const Container = styled.div`
-  width: 375px;
+  max-width: 375px;
   display: block;
+  width: 100%;
   box-shadow: 0px 9px 12px rgba(0, 0, 0, 0.06);
   background: #fff;
 `;

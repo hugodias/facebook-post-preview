@@ -6,27 +6,25 @@ import Loading from "./components/loading";
 import styled from "styled-components";
 
 const Row = styled.div`
-  display: flex;
-  flex-flow: row wrap;
-  width: 1020px;
+  display: grid;
+  max-width: 1060px;
   margin: 0 auto;
-  align-content: space-between;
+  padding: 0 20px;
+  grid-template-columns: auto 1fr 210px 375px;
 
   @media all and (max-width: 960px) {
     width: 100%;
+    display: block;
   }
 `;
 const Col = styled.div`
-  flex: 1;
-
   margin-top: ${props => (props.right ? 70 : 0)};
 
   @media all and (max-width: 960px) {
-    flex: ${props => (props.middle ? "1" : "2 100%")};
     display: ${props => (props.middle ? "none" : "block")};
     margin-top: 0;
     margin: 0 auto;
-    padding: 30px;
+    padding: 30px 10px;
   }
 `;
 
