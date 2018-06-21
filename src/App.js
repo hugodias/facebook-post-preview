@@ -25,7 +25,6 @@ const Col = styled.div`
     flex: ${props => (props.middle ? "1" : "2 100%")};
     display: ${props => (props.middle ? "none" : "block")};
     margin-top: 0;
-    text-align: center;
     margin: 0 auto;
     padding: 30px;
   }
