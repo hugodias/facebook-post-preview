@@ -7,7 +7,6 @@ const Container = styled.div`
   -webkit-font-smoothing: antialiased;
   max-width: 375px;
   width: 100%;
-  padding-right: 10px;
 `;
 const WarningTitle = styled.div`
   font-family: Roboto;
