@@ -7,12 +7,28 @@ import styled from "styled-components";
 
 const Row = styled.div`
   display: flex;
+  flex-flow: row wrap;
   width: 1020px;
   margin: 0 auto;
   align-content: space-between;
+
+  @media all and (max-width: 960px) {
+    width: 100%;
+  }
 `;
 const Col = styled.div`
   flex: 1;
+
+  margin-top: ${props => (props.right ? 70 : 0)};
+
+  @media all and (max-width: 960px) {
+    flex: ${props => (props.middle ? "1" : "2 100%")};
+    display: ${props => (props.middle ? "none" : "block")};
+    margin-top: 0;
+    text-align: center;
+    margin: 0 auto;
+    padding: 30px;
+  }
 `;
 
 const Title = styled.h1`
@@ -30,6 +46,10 @@ const Subtitle = styled.h3`
   margin-top: 56px;
   margin-bottom: 25px;
   color: #fff;
+
+  @media all and (max-width: 960px) {
+    display: none;
+  }
 `;
 
 const Info = styled.div`
@@ -127,14 +147,14 @@ class App extends Component {
             </Paragraph>
           </Info>
         </Col>
-        <Col>
+        <Col middle>
           <Loading
             className="loading-block"
             started={started}
             loading={loading}
           />
         </Col>
-        <Col align="right" style={{ marginTop: 70 }}>
+        <Col right>
           <Subtitle style={{ MarginTop: 50 }}>Preview result</Subtitle>
           <FacebookMobilePost {...this.state} style={{ float: "right" }} />
           <Warnings

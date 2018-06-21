@@ -38,6 +38,12 @@ body:before {
 	animation-duration: 0.5s;
 }
 
+@media all and (max-width: 960px) { 
+  .loading-block {
+    margin-top: 0;
+  }
+}
+
 @keyframes fadeInOpacity {
 	0% {
 		opacity: 0;
