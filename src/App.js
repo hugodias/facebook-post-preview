@@ -158,7 +158,7 @@ class App extends Component {
             {...this.state.meta}
             loading={loading}
             started={started}
-            style={{ float: "right" }}
+            style={{ float: "right", marginTop: 50 }}
           />
         </Col>
       </Row>
