@@ -58,6 +58,14 @@ const MissingBlock = styled.div`
   padding-bottom: 20px;
 `;
 
+const Tips = styled.div`
+  font-size: 14px;
+  color: #BCBCBC;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 14px;
+`;
+
 class Warnings extends Component {
   valid() {
     const { ogImage, ogTitle, ogDescription, ogUrl } = this.props;
@@ -159,7 +167,18 @@ class Warnings extends Component {
   }
 
   render() {
-    if (this.valid() || !this.props.started || this.props.loading) return null;
+    if (this.valid()) {
+      return (
+        <Container style={this.props.style}>
+          <Tips>
+            This is <strong>probably</strong> how your post is going to look on Facebook.
+          </Tips>
+          <Tips>Try using a different URL to see different results</Tips>
+        </Container>
+      );
+    }
+
+    if ( !this.props.started || this.props.loading) return null;
 
     return (
       <Container style={this.props.style}>
