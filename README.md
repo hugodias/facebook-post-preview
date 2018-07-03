@@ -3,7 +3,7 @@
 
 ![screenshot](https://raw.githubusercontent.com/hugodias/facebook-post-preview/master/public/screenshot.png)
 
-## [Demo](https://vibrant-villani-8ede14.netlify.com/)
+## [Demo](https://facebook-preview.netlify.com/)
 
 ## Local Development
 
