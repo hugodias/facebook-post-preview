@@ -65,26 +65,13 @@ class Form extends Component {
     super(props);
 
     this.state = {
-      loading: false,
       text: this.props.text
     };
   }
 
   handleSubmit = e => {
     e.preventDefault();
-
-    this.setState({ loading: true });
-
-    this.props.processingStarted();
-
-    fetch(`/.netlify/functions/open-graph-preview?q=${this.state.text}`)
-      .then(response => response.json())
-      .then(json => {
-        this.setState({
-          loading: false
-        });
-        this.props.formSubmitted(json);
-      });
+    this.props.simpleAction(this.state.text);
   };
 
   handleChange = e => {
@@ -92,7 +79,8 @@ class Form extends Component {
   };
 
   render() {
-    const { text, loading } = this.state;
+    const { text } = this.state;
+    const { loading } = this.props;
 
     return (
       <Container>

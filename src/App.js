@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { simpleAction } from "./actions/simpleAction";
 import FacebookMobilePost from "./components/facebook-mobile-post";
 import Warnings from "./components/warnings";
 import Form from "./components/form";
@@ -78,8 +80,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      started: false,
-      loading: true,
       text:
         "This is a publication with URL https://codeburst.io/extracting-a-react-js-component-and-publishing-it-on-npm-2a49096757f5",
       meta: {},
@@ -87,18 +87,8 @@ class App extends Component {
     };
   }
 
-  handleProcessingStarted = () => {
-    this.setState({ started: true, loading: true });
-  };
-
-  handleFormSubmitted = data => {
-    const newState = { ...data };
-    newState.loading = false;
-    this.setState(newState);
-  };
-
   render() {
-    const { started, loading } = this.state;
+    const { started, loading } = this.props;
 
     return (
       <Row>
@@ -113,11 +103,7 @@ class App extends Component {
         <Col align="left">
           <Title>Facebook post preview</Title>
           <Subtitle>Paste a text with an URL and press the button</Subtitle>
-          <Form
-            {...this.state}
-            processingStarted={this.handleProcessingStarted}
-            formSubmitted={this.handleFormSubmitted}
-          />
+          <Form {...this.state} loading={loading} simpleAction={this.props.simpleAction} />
 
           <Info>
             <Lead>What is this?</Lead>
@@ -166,4 +152,15 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  ...state
+});
+
+const mapDispatchToProps = dispatch => ({
+  simpleAction: () => dispatch(simpleAction())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
