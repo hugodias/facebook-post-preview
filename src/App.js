@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { simpleAction } from "./actions/simpleAction";
+import { postAction } from "./actions/postAction";
 import FacebookMobilePost from "./components/facebook-mobile-post";
 import Warnings from "./components/warnings";
 import Form from "./components/form";
@@ -96,7 +96,7 @@ class App extends Component {
           <Form
             {...this.props}
             loading={loading && started}
-            simpleAction={text => this.props.simpleAction(text)}
+            postAction={text => this.props.postAction(text)}
           />
 
           <Info>
@@ -151,7 +151,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  simpleAction: (text) => dispatch(simpleAction(text))
+  postAction: (text) => dispatch(postAction(text))
 });
 
 export default connect(

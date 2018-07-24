@@ -74,7 +74,7 @@ class Form extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const text = this.state.text;
-    this.props.simpleAction(text);
+    this.props.postAction(text);
   };
 
   handleChange = e => {

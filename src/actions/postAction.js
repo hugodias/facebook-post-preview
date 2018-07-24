@@ -1,19 +1,21 @@
-export const simpleAction = text => {
+import { POST_FETCH, RESPONSE_RECEIVE, RESPONSE_RECEIVED } from "./actionTypes";
+
+export const postAction = text => {
   return dispatch => {
     dispatch({
-      type: "FETCH_START"
+      type: POST_FETCH
     });
 
     return fetch(`/.netlify/functions/open-graph-preview?q=${text}`)
       .then(response => response.json())
       .then(json => {
         dispatch({
-          type: "RECEIVE_RESPONSE",
+          type: RESPONSE_RECEIVE,
           data: json
         });
 
         dispatch({
-          type: "FETCH_ENDED"
+          type: RESPONSE_RECEIVED
         });
       });
   };

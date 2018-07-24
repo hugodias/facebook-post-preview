@@ -1,14 +1,16 @@
+import { POST_FETCH, RESPONSE_RECEIVE, RESPONSE_RECEIVED } from "../actions/actionTypes";
+
 export default (state = {}, action) => {
   switch (action.type) {
-    case "FETCH_START":
+    case POST_FETCH:
       return {
         ...state,
         loading: true,
         started: true
       };
-    case "RECEIVE_RESPONSE":
+    case RESPONSE_RECEIVE:
       return Object.assign({}, state, action.data);
-    case "FETCH_ENDED":
+    case RESPONSE_RECEIVED:
       return {
         ...state,
         loading: false
