@@ -77,16 +77,6 @@ const Paragraph = styled.p`
 `;
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      text:
-        "This is a publication with URL https://codeburst.io/extracting-a-react-js-component-and-publishing-it-on-npm-2a49096757f5",
-      meta: {},
-      error: null
-    };
-  }
-
   render() {
     const { started, loading } = this.props;
 
@@ -103,7 +93,11 @@ class App extends Component {
         <Col align="left">
           <Title>Facebook post preview</Title>
           <Subtitle>Paste a text with an URL and press the button</Subtitle>
-          <Form {...this.state} loading={loading} simpleAction={this.props.simpleAction} />
+          <Form
+            {...this.props}
+            loading={loading && started}
+            simpleAction={text => this.props.simpleAction(text)}
+          />
 
           <Info>
             <Lead>What is this?</Lead>
@@ -139,9 +133,9 @@ class App extends Component {
         </Col>
         <Col right>
           <Subtitle style={{ MarginTop: 50 }}>Preview result</Subtitle>
-          <FacebookMobilePost {...this.state} style={{ float: "right" }} />
+          <FacebookMobilePost {...this.props} loading={loading} style={{ float: "right" }} />
           <Warnings
-            {...this.state.meta}
+            {...this.props.meta}
             loading={loading}
             started={started}
             style={{ float: "right", marginTop: 50 }}
@@ -153,11 +147,11 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  ...state
+  ...state.simpleReducer
 });
 
 const mapDispatchToProps = dispatch => ({
-  simpleAction: () => dispatch(simpleAction())
+  simpleAction: (text) => dispatch(simpleAction(text))
 });
 
 export default connect(

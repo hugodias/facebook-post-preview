@@ -67,11 +67,14 @@ class Form extends Component {
     this.state = {
       text: this.props.text
     };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.simpleAction(this.state.text);
+    const text = this.state.text;
+    this.props.simpleAction(text);
   };
 
   handleChange = e => {
