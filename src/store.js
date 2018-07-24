@@ -3,7 +3,7 @@ import thunk from "redux-thunk";
 import rootReducer from "./reducers/rootReducer";
 export default function configureStore(
   initialState = {
-    simpleReducer: {
+    default: {
       started: false,
       loading: true,
       text:

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { postAction } from "./actions/postAction";
+import { fetchPublication } from "./ducks/publications";
 import FacebookMobilePost from "./components/facebook-mobile-post";
 import Warnings from "./components/warnings";
 import Form from "./components/form";
@@ -96,7 +96,7 @@ class App extends Component {
           <Form
             {...this.props}
             loading={loading && started}
-            postAction={text => this.props.postAction(text)}
+            postAction={text => this.props.fetchPublication(text)}
           />
 
           <Info>
@@ -147,11 +147,11 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  ...state.simpleReducer
+  ...state.default
 });
 
 const mapDispatchToProps = dispatch => ({
-  postAction: (text) => dispatch(postAction(text))
+  fetchPublication: (text) => dispatch(fetchPublication(text))
 });
 
 export default connect(

@@ -1,5 +1,3 @@
 import { combineReducers } from "redux";
-import simpleReducer from "./simpleReducer";
-export default combineReducers({
-  simpleReducer
-});
+import * as reducers from "../ducks/publications";
+export default combineReducers(reducers);
