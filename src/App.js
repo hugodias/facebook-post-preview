@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { fetchPublication } from "./ducks/publications";
 import FacebookMobilePost from "./components/facebook-mobile-post";
 import Warnings from "./components/warnings";
 import Form from "./components/form";
@@ -75,30 +77,8 @@ const Paragraph = styled.p`
 `;
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      started: false,
-      loading: true,
-      text:
-        "This is a publication with URL https://codeburst.io/extracting-a-react-js-component-and-publishing-it-on-npm-2a49096757f5",
-      meta: {},
-      error: null
-    };
-  }
-
-  handleProcessingStarted = () => {
-    this.setState({ started: true, loading: true });
-  };
-
-  handleFormSubmitted = data => {
-    const newState = { ...data };
-    newState.loading = false;
-    this.setState(newState);
-  };
-
   render() {
-    const { started, loading } = this.state;
+    const { started, loading } = this.props;
 
     return (
       <Row>
@@ -114,9 +94,9 @@ class App extends Component {
           <Title>Facebook post preview</Title>
           <Subtitle>Paste a text with an URL and press the button</Subtitle>
           <Form
-            {...this.state}
-            processingStarted={this.handleProcessingStarted}
-            formSubmitted={this.handleFormSubmitted}
+            {...this.props}
+            loading={loading && started}
+            postAction={text => this.props.fetchPublication(text)}
           />
 
           <Info>
@@ -153,9 +133,9 @@ class App extends Component {
         </Col>
         <Col right>
           <Subtitle style={{ MarginTop: 50 }}>Preview result</Subtitle>
-          <FacebookMobilePost {...this.state} style={{ float: "right" }} />
+          <FacebookMobilePost {...this.props} loading={loading} style={{ float: "right" }} />
           <Warnings
-            {...this.state.meta}
+            {...this.props.meta}
             loading={loading}
             started={started}
             style={{ float: "right", marginTop: 50 }}
@@ -166,4 +146,15 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  ...state.default
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchPublication: (text) => dispatch(fetchPublication(text))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
